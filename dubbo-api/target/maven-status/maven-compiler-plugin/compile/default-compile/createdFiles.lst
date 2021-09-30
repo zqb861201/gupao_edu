@@ -1,0 +1,16 @@
+cn\enjoy\async\AsyncService.class
+cn\enjoy\callback\CallbackListener.class
+cn\enjoy\invokegeneric\Invokegeneric.class
+cn\enjoy\group\Group.class
+cn\enjoy\admintest\AdminIntf.class
+cn\enjoy\annotation\AnnotationService.class
+cn\enjoy\event\EventService.class
+cn\enjoy\shiyong\AreaManager.class
+cn\enjoy\validation\ValidationParamter.class
+cn\enjoy\service\UserService.class
+cn\enjoy\stub\StubService.class
+cn\enjoy\mock\MockService.class
+cn\enjoy\callback\CallbackService.class
+cn\enjoy\validation\ValidationService.class
+cn\enjoy\App.class
+cn\enjoy\version\VersionService.class
