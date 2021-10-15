@@ -1,6 +1,7 @@
 package cn.enjoy;
 
 import cn.enjoy.config.ProviderConfiguration;
+import cn.enjoy.zk.ZKTools;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.concurrent.CountDownLatch;
@@ -14,6 +15,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class AnnotationProvider {
     public static void main(String[] args) throws InterruptedException {
+        ZKTools.generateDubboProperties();
         new AnnotationConfigApplicationContext(ProviderConfiguration.class);
         System.out.println("dubbo service started.");
         new CountDownLatch(1).await();
