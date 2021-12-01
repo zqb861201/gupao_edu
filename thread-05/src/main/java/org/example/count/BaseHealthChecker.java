@@ -8,13 +8,28 @@ import java.util.concurrent.CountDownLatch;
  * http://www.gupaoedu.com
  **/
 public abstract class BaseHealthChecker implements Runnable{
+    private CountDownLatch countDownLatch;
 
     private String serviceName; //服务名称
 
     private boolean serviceUp;
 
+    public BaseHealthChecker(){
+
+    }
     public BaseHealthChecker(String serviceName) {
         this.serviceName = serviceName;
+    }
+    public BaseHealthChecker(CountDownLatch countDownLatch,String serviceName) {
+        this.countDownLatch = countDownLatch;
+        this.serviceName = serviceName;
+    }
+    public void setCountDownLatch(CountDownLatch countDownLatch) {
+        this.countDownLatch = countDownLatch;
+    }
+
+    public CountDownLatch getCountDownLatch() {
+        return countDownLatch;
     }
 
     @Override

@@ -14,21 +14,26 @@ import java.util.concurrent.CountDownLatch;
 public class ApplicationStartup {
 
     private static List<BaseHealthChecker> services;
-    private static CountDownLatch countDownLatch=new CountDownLatch(2);
+    private static CountDownLatch countDownLatch;//=new CountDownLatch(2);
 
     static{
-        services=new ArrayList<>();
-        services.add(new CacheHealthChecker(countDownLatch));
-        services.add(new DatabaseHealthChecker(countDownLatch));
+        services=new ArrayList<BaseHealthChecker>();
+        BaseHealthChecker cache = new CacheHealthChecker();
+        BaseHealthChecker database = new DatabaseHealthChecker();
+        services.add(cache);
+        services.add(database);
+        countDownLatch = new CountDownLatch(services.size());
+        cache.setCountDownLatch(countDownLatch);
+        database.setCountDownLatch(countDownLatch);
     }
 
-    private final static ApplicationStartup INSTANCE=new ApplicationStartup();
+    //private final static ApplicationStartup INSTANCE=new ApplicationStartup();
 
-    private ApplicationStartup(){}
+    //private ApplicationStartup(){}
 
-    public static ApplicationStartup getInstance(){
-        return INSTANCE;
-    }
+    //public static ApplicationStartup getInstance(){
+        //return INSTANCE;
+    //}
 
     public static boolean checkExternalServices() throws InterruptedException {
         for(BaseHealthChecker bh:services){

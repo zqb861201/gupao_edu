@@ -10,7 +10,7 @@ public class StartupMain {
         try {
             ApplicationStartup.checkExternalServices();
         } catch (InterruptedException e) {
-            //有问题了.
+            e.printStackTrace();
         }
         System.out.println("服务启动成功");
     }
