@@ -1,0 +1,30 @@
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enable: true
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 3000
+    IGoodsServiceFeignClient#getGoodsById(int):
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          semaphore:
+            maxConcurrentRequests: 2
+  threadpool:
+    goods-service:
+      coreSize: 2
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+
+
+
+
+
+
+
+
